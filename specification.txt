@@ -1,0 +1,10 @@
+What for:
+The app allows you to use the API to manage the university/high school enrollment.
+
+Models structure:
+Each user has passed 3 exams and has scores on him. Also he has an additional info such as phone number to contact him and first/last name as well.
+There is an exam model that contains those fields: id, title of the exam and scores for it.
+
+What should do:
+The interface allows you to send post/get/put/delete requests to the server and CRUD enrolee objects to manage the enrollement.
+By requesting /enrolled url you can get top 

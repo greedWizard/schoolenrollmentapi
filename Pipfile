@@ -12,6 +12,7 @@ flask-sqlalchemy = "*"
 marshmallow = "*"
 marshmallow-sqlalchemy = "*"
 flask-marshmallow = "*"
+flask-migrate = "*"
 
 [requires]
 python_version = "3.8"

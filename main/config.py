@@ -24,11 +24,11 @@ ma = Marshmallow(app)
 migrate = Migrate(app, db)
 
 
-from specializations.routes import specializations
+from specialties.routes import specialties
 from enrollees.routes import enrolees
 from faculties.routes import faculties
 
 
-app.register_blueprint(specializations, url_prefix='/specs')
+app.register_blueprint(specialties, url_prefix='/specialties')
 app.register_blueprint(faculties, url_prefix='/faculties')
 app.register_blueprint(enrolees, url_prefix='/enrolees')

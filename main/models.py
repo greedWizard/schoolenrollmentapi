@@ -1,6 +1,8 @@
 from main.config import db
 
 
+# Models
+
 class Faculty(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), unique=True)
@@ -10,7 +12,6 @@ class Faculty(db.Model):
 
     def __init__(self, title):
         self.title = title
-
 
 
 class Specialty(db.Model):
@@ -45,23 +46,13 @@ class Enrolee(db.Model):
     last_name = db.Column(db.String(100), nullable=False)
     phone_number = db.Column(db.String(20), nullable=False)
     
-    speciality_id = db.Column(db.Integer, db.ForeignKey('speciality.id'))
+    speciality_id = db.Column(db.Integer, db.ForeignKey('specialty.id'))
     speciality = db.relationship('Specialty', backref=db.backref('enrolees', lazy=True))
 
-    exam1_id = db.Column(db.Integer, db.ForeignKey('exam.id'))
-    exam1 = db.relationship('Exam', backref=db.backref('enrolees'))
-    
-    exam2_id = db.Column(db.Integer, db.ForeignKey('exam.id'))
-    exam2 = db.relationship('Exam', backref=db.backref('enrolees'))
-    
-    exam3_id = db.Column(db.Integer, db.ForeignKey('exam.id'))
-    exam3 = db.relationship('Exam', backref=db.backref('enrolees'))
-    
-    exam1_score = db.Column(db.Integer)
-    exam2_score = db.Column(db.Integer)
-    exam3_score = db.Column(db.Integer)
+    exam_id = db.Column(db.Integer, db.ForeignKey('exam.id'))
+    exam = db.relationship('Exam', backref=db.backref('enrolees'), foreign_keys=[exam_id])
 
-    total_scores = db.Column(db.Integer)
+    exam_scores = db.Column(db.Integer)
 
     def __init__(self, first_name, last_name, age, phone_number, speciality_id, \
         exam1_id, exam2_id, exam3_id, exam1_score, exam2_score, exam3_score):
@@ -79,7 +70,6 @@ class Enrolee(db.Model):
 
             self.total_scores = exam1_score + exam2_score + exam3_score
         
-
 
     def __repr__(self):
         return f'<Enrolee: {self.last_name}, {self.first_name} {self.phone_number} \

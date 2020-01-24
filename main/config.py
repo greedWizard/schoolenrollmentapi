@@ -25,10 +25,12 @@ migrate = Migrate(app, db)
 
 
 from specialties.routes import specialties
-from enrollees.routes import enrolees
+from enrollees.routes import enrollees
 from faculties.routes import faculties
+from exams.routes import exams
 
 
 app.register_blueprint(specialties, url_prefix='/specialties')
 app.register_blueprint(faculties, url_prefix='/faculties')
-app.register_blueprint(enrolees, url_prefix='/enrolees')
+app.register_blueprint(enrollees, url_prefix='/enrollees')
+app.register_blueprint(exams, url_prefix='/exams')

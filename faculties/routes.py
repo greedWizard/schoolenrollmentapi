@@ -29,12 +29,32 @@ def get_all() -> list:
     return jsonify(result)
 
 
+@faculties.route('/<int:id>', methods=['GET'])
+def get(id) -> Faculty:
+    ''' Returns a single faculty by an id '''
+    fac = Faculty.query.get_or_404(id)
+
+    return faculty_schema.jsonify(fac)
+
+
 @faculties.route('/<int:id>', methods=['PUT'])
 def update(id: int) -> Faculty:
     fac = Faculty.query.get_or_404(id)
+    print(fac)
 
     title = request.json['title']
     fac.title = title
+
+    db.session.commit()
+
+    return faculty_schema.jsonify(fac)
+
+
+@faculties.route('/<int:id>', methods=['DELETE'])
+def delete(id) -> Faculty:
+    fac = Faculty.query.get_or_404(id)
+
+    db.session.delete(fac)
 
     db.session.commit()
 

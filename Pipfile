@@ -13,6 +13,8 @@ marshmallow = "*"
 marshmallow-sqlalchemy = "*"
 flask-marshmallow = "*"
 flask-migrate = "*"
+pyqt5 = "*"
+requests = "*"
 
 [requires]
 python_version = "3.8"
